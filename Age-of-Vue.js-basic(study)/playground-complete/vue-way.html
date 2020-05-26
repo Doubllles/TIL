@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app"></div>
+
+
+  <!-- Vue.js란 데이터의 변화를 라이브러리로 감지해서 알아서 화면을 바꿔주는 리액티비티!, 이로써 화면이 바뀌는 것이 데이터바인딩! -->
+  <script>
+    var div = document.querySelector('#app');
+    var viewModel = {};
+
+    // Object.defineProperty(대상 객체, 객체의 속성, {
+    //   // 정의할 내용
+    // })
+
+    (function () { //리액티비티 코드 라이브러리화 하기(특정 기능들을 쪼개놓는다.)
+      function init() {
+        // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty
+        // 객체의 속성의 동작을 재정의 하는 API , ex)viewModel은 빈객체지만 재정의 하겠다.
+        Object.defineProperty(viewModel, 'str', {
+          // 속성에 접근했을 때의 동작을 정의
+          get: function () {
+            console.log('접근');
+          },
+          // 속성에 값을 할당했을 때의 동작을 정의
+          set: function (newValue) {
+            console.log('할당', newValue);
+            // div.innerHTML=newValue;
+            render(newValue);
+          }
+        });
+      }
+
+      function render(value) {
+        div.innerHTML = value;
+      }
+
+      init();
+    })();
+  </script>
+</body>
+
+</html>

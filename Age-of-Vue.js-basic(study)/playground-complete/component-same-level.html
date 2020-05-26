@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- this.$emit('pass'); 'pass'라는 이벤트받음 -->
+    <app-header v-bind:propsdata="num"></app-header>
+    <app-content v-on:pass="deliverNum"></app-content>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    var appHeader = {
+      template: '<div>header</div>',
+      props: ['propsdata']
+    }
+    var appContent = {
+      // pass버튼을 눌렀을때 같은 라인의 컴포넌트에게 신호를발생시킴
+      template: '<div>content<button v-on:click="passNum">pass</button></div>',
+      methods: {
+        passNum: function () {
+          //콘솔의 events창에서 배열의 첫번쨰 인자가 10이됨(인자10을 root에 올려줌)
+          // 컴포넌트 태그에 이벤트를올려줌!
+          this.$emit('pass', 10);
+        }
+      }
+    }
+
+    new Vue({
+      el: '#app',
+      components: {
+        'app-header': appHeader,
+        'app-content': appContent
+      },
+      data: {
+        num: 0
+      },
+      methods: {
+        // 인자 10이 value로 정의할 수 있다
+        deliverNum: function (value) {
+          // this.num이라는 데이터 속성에 담는다 
+          // data의 num: 0이 10으로 바뀐다 
+          this.num = value;
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Axios</title>
+</head>
+<body>
+  <div id="app">
+    <button v-on:click="getData">get user</button>
+    <div>
+      {{ users }}
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        users: []
+      },
+      methods: {
+        getData: function() { 
+          var vm = this;
+            // url 약10개의 사용자정보가 담긴 배열이있다.rest APi라고 해서 JS를 APi를 요청할때 테스트해 볼 수 있는 사이트
+            //10개의 유저정보를 받아온것
+          axios.get('https://jsonplaceholder.typicode.com/users/')
+          //받아오고나서 성공하면 then
+            .then(function(response) {
+              console.log(response.data);
+              vm.users = response.data;
+            })
+            //받아오고나서 실패하면 catch
+            .catch(function(error) {
+              console.log(error);
+            });
+        }
+      }
+    })
+  </script>
+</body>
+</html>

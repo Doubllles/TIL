@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started</title>
+  </head>
+  <body>
+    <div id="app">
+      {{ message }}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      new Vue({
+        // <div id="app">내부의 기능과 속성을 유효하게 해줌
+        el: '#app',
+        data: {
+          message: 'Hello Vue.js'
+        }
+      })
+    </script>
+  </body>
+</html>
