@@ -1,0 +1,66 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wordreplay</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!-- html쪽에서 는 케밥케이스로 작성하면 자바스크립트쪽에서는 어떤케이스로 받을수 있다. -->
+        <word-replay start-Word="제로초"></word-replay>
+        <word-replay start-Word="초밥"></word-replay>
+        <word-replay start-Word="바보"></word-replay>
+    </div>
+
+    <script>
+                        // 뷰의 전역 컴포넌트
+        // html쪽에서 는 케밥케이스로 작성하면 자바스크립트쪽에서는 어떤케이스로 받을수 있다.
+        Vue.component('word-replay', {
+            template:`
+            <div>
+                <div>{{word}}</div>
+                    <form v-on:submit="onSubmitForm">
+                        <input type="text" ref="answer" v-model="value">
+                        <button type="submit">입력!</button>
+                    </form>
+                <div>{{result}}</div>
+            </div>            
+        `,
+        // html쪽에서 는 케밥케이스로 작성하면 자바스크립트쪽에서는 어떤케이스로 받을수 있다.
+        props: ['startWord'], 
+        data() {
+            
+            return {
+                word: this.startWord,
+                result:'',
+                value:''
+            };
+        },
+        methods:{
+                onSubmitForm(e) {
+                    e.preventDefault();
+                    if(this.word[this.word.length - 1] === this.value[0]) {
+                        this.result = '딩동댕';
+                        this.word = this.value;
+                        this.value = '';
+                        this.$refs.answer.focus();
+                    }else {
+                        this.result = '땡';
+                        this.value = '';
+                        this.$refs.answer.focus();   
+                    }
+                     
+                },
+            },
+        }) 
+    </script>
+    <script>
+        // 뷰의 인스턴스
+        const app = new Vue({
+            el: '#root',
+              })
+    </script>
+</body>
+</html>

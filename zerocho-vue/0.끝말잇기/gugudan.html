@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>구구단</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!-- html의 텍스트노드이면 중괄호두번으로 데이터에 접근가능 -->
+        <div> {{first.toString()}}곱하기 {{second.toString()}}는?</div>
+        <!-- methods에 넣는다, 이벤트 리스너라고 생각하자 -->
+        <form v-on:submit="onSubmitForm">
+              <!-- 직접태그에 접근해야 할때-1 (ref="answer"), v-model이 스크립트의 변수와 연결해준다. -->
+            <input type="number" ref="answer" v-model="value">
+
+            <button type="submit">입력</button>
+        </form> 
+        <div id="result">{{result}}</div> 
+    </div>
+    <script>
+         const app = new Vue({
+             el: '#root',
+             data: {
+                 first: Math.ceil(Math.random() * 9),
+                 second: Math.ceil(Math.random() * 9),
+                 value:'', 
+                 result:'',
+             },
+             methods:{
+                onSubmitForm(e) {
+                    // form이 페이지 새로고침 되는것을 막아줌, 리액트,뷰 같은 싱글페이지에 새로고침을 막기위해 
+                     e.preventDefault(); 
+                    //  console.log(this);
+                    //  conso le.log(this.first, this.second,this.value);
+                     if(this.first * this.second === parseInt(this.value)) { 
+                         this.result = '정답'; 
+                         this.first= Math.ceil(Math.random() * 9); 
+                         this.second= Math.ceil(Math.random() * 9); 
+                         this.value='';
+                        //  직접태그에 접근해야 할때-2 태그를 선택한것 'answer'를!
+                         this.$refs.answer.focus();
+                     }else {
+                        this.result = '땡';
+                        this.value='';
+                        this.$refs.answer.focus();
+                     }
+                },
+             },
+         });
+    </script>
+     
+</body>
+</html> 

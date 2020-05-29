@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>wordreplay</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <!-- 뷰 컴퍼넌트 이름을 적어준다 -->
+        <word-replay></word-replay>
+        <word-replay></word-replay>
+        <word-replay></word-replay>
+  
+    </div>
+
+    <script>
+        // 뷰의 전역 컴포넌트
+        Vue.component('word-replay', {
+            template:`
+            <div>
+                <div>{{word}}</div>
+                    <form v-on:submit="onSubmitForm">
+                        <input type="text" ref="answer" v-model="value">
+                        <button type="submit">입력!</button>
+                    </form>
+                <div>{{result}}</div>
+            </div>            
+        `,
+        data() {
+            return {
+                word:'제로초',
+                result:'',
+                value:''
+            }; 
+        },
+        methods:{
+                onSubmitForm(e) {
+                    e.preventDefault();
+                    if(this.word[this.word.length - 1] === this.value[0]) {
+                        this.result = '딩동댕';
+                        this.word = this.value;
+                        this.value = '';
+                        this.$refs.answer.focus();
+                    }else {
+                        this.result = '땡';
+                        this.value = '';
+                        this.$refs.answer.focus();   
+                    }
+                     
+                },
+            },
+        }) 
+    </script>
+    <script>
+        // 뷰의 인스턴스
+        const app = new Vue({
+            el: '#root',
+              })
+    </script>
+</body>
+</html>
