@@ -24,6 +24,7 @@
         // cname: 'blue-text',
         isError: false
       },
+      // return 사용가능
       computed: {
         errorTextColor: function() {
           // if (isError) {
@@ -31,6 +32,7 @@
           // } else {
           //   return null;
           // }
+            // 삼항연산자로 true인경우 'warning'에 style에 있는 빨간색을 적용시킴
           return this.isError ? 'warning' : null;
         }
       }

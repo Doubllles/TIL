@@ -11,6 +11,8 @@
     {{ num }}
   </div>
 
+  <!-- https://vuejs.org/v2/guide/computed.html#ad ,읽어보고 개인적 정의 내려보기-->
+   <!-- watch와 computed 의 비교 -->
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
     new Vue({
@@ -18,11 +20,15 @@
       data: {
         num: 10
       },
+        // 데이터의 의존성, 로직이 실행될때 기본적으로 기준이되는 속성,여기서는 num
+          // 단순한 값에대한 계산
       computed: {
         doubleNum: function() {
           return this.num * 2;
         }
       },
+      // num이 바뀌었을떄 특정 로직을 실행한다.
+        // 무거운 직들, 매번 실행되기 부담스러운 로직
       watch: {
         num: function(newValue, oldValue) {
           this.fetchUserByNumber(newValue);
