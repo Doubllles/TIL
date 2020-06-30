@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+
 <body>
   <div id="app">
+    <!-- 마우스 이벤트 처리 -->
     <button v-on:click="logText">click me</button>
+    <!-- 키보드 이벤트 처리 / .enter (enter사용에만 logText 메소드를 쓰겠다 ) -->
     <input type="text" v-on:keyup.enter="logText">
+    <!-- '마우스 클릭'이 아닌 '키보드'로 enter를 쳤을때 add가 갖는 메서드를 실행시키는 듯한 효과를 낼 수 있다. -->
     <button>add</button>
   </div>
 
@@ -18,11 +23,12 @@
     new Vue({
       el: '#app',
       methods: {
-        logText: function() {
+        logText: function () {
           console.log('clicked');
         }
       }
     })
   </script>
 </body>
+
 </html>

@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+
 <body>
   <div id="app">
+    <!-- 디렉티브:v- 가 붙는 특수한 속성 ,data 나 computed속성값을 찾는다-->
+    <!-- v-bind uuid라는 데이터로 id로 관리하고싶을때 ,데이터에서 관리하는 특정 데이터 값이 연결된다.  -->
     <p v-bind:id="uuid" v-bind:class="name">{{ num }}</p>
     <!-- <p id="abc1234">{{ num }}</p> -->
     <p>{{ doubleNum }}</p>
+    <!-- vue에서 false로 바꾼경우, 돔에서 아얘 보여지지않음 -->
     <div v-if="loading">
       Loading...
     </div>
     <div v-else>
       test user has been logged in
     </div>
+    <!-- vue에서 false로 바꾼경우, display:none유관상으로 보여지지 않게하고, 돔에는 남아있다 -->
     <div v-show="loading">
       Loading...
     </div>
@@ -37,11 +43,12 @@
         message: ''
       },
       computed: {
-        doubleNum: function() {
+        doubleNum: function () {
           return this.num * 2;
         }
       }
     })
   </script>
 </body>
+
 </html>
