@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+
 <body>
   <div id="app">
     {{ num }}
@@ -19,22 +21,23 @@
       data: {
         num: 10
       },
-      // 데이터를 대상으로 넣을 수 있고,데이터의 변화에 따라서 특정 로직을 실행할 수 있는 뷰의 속성
+      // data를 대상으로 넣을 수 있고,데이터의 변화에 따라서 특정 로직을 실행할 수 있는 뷰의 속성
       // num이 바뀔때 마다 logText가 계속 실행된다.
       watch: {
-        num: function() {
+        num: function () {
           this.logText();
         }
       },
       methods: {
-        addNum: function() {
+        addNum: function () {
           this.num = this.num + 1;
         },
-        logText: function() {
+        logText: function () {
           console.log('changed');
         }
       }
     })
   </script>
 </body>
+
 </html>

@@ -26,8 +26,8 @@
       template: '<div>content<button v-on:click="passNum">pass</button></div>',
       methods: {
         passNum: function () {
-          //콘솔의 events창에서 배열의 첫번쨰 인자가 10이됨(인자10을 root에 올려줌)
-          // 컴포넌트 태그에 이벤트를올려줌!
+          //콘솔의 events창에서 배열의 첫번쨰 인자가 10이됨(이벤트탭에서 payload부분에 인자10을 root에 올려줌)
+          // 하위컴포넌트에 이벤트로 올려줌!
           this.$emit('pass', 10);
         }
       }
@@ -43,7 +43,7 @@
         num: 0
       },
       methods: {
-        // 인자 10이 value로 정의할 수 있다
+        // 인자 10을 받는쪽이며, deliverNum함수에서 value로 정의해 받을 수 있다
         deliverNum: function (value) {
           // this.num이라는 데이터 속성에 담는다 
           // data의 num: 0이 10으로 바뀐다 

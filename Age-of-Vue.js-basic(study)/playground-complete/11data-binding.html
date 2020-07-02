@@ -11,7 +11,8 @@
 <body>
   <div id="app">
     <!-- 디렉티브:v- 가 붙는 특수한 속성 ,data 나 computed속성값을 찾는다-->
-    <!-- v-bind uuid라는 데이터로 id로 관리하고싶을때 ,데이터에서 관리하는 특정 데이터 값이 연결된다.  -->
+    <!-- v-bind ex)uuid라는 데이터로 id로 관리하고싶을때 ,데이터에서 관리하는 특정 데이터 값이 연결된다.  
+         vue로 data를 수정할수있다.-->
     <p v-bind:id="uuid" v-bind:class="name">{{ num }}</p>
     <!-- <p id="abc1234">{{ num }}</p> -->
     <p>{{ doubleNum }}</p>
