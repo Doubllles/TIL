@@ -1,21 +1,20 @@
 <template>
   <header>
-    <h1>{{ propsdata }}</h1>
+    <div>Header</div>
     <button v-on:click="sendEvent">send</button>
   </header>
 </template>
 
 <script>
 export default {
-  props: ['propsdata'],
+  props: data["propsdata"],
   methods: {
     sendEvent: function() {
-      this.$emit('renew');
+      this.$emit("renew");
     }
   }
-}
+};
 </script>
 
 <style>
-
 </style>
